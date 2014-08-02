@@ -14,16 +14,16 @@ import dao.ManagerDao;
 import model.Employee;
 
 /**
- * Servlet implementation class DptMemberDetail
+ * Servlet implementation class DrawSameSalary
  */
-@WebServlet("/DptMemberDetail")
-public class DptMemberDetail extends HttpServlet {
+@WebServlet("/DrawSameSalary")
+public class DrawSameSalary extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DptMemberDetail() {
+    public DrawSameSalary() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,12 +39,14 @@ public class DptMemberDetail extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<Employee> salaryList = new ArrayList<Employee>();
+		salaryList = ManagerDao.empWithSameSalary(Integer.parseInt(request.getParameter("emplist")));
 		PrintWriter out = response.getWriter();
-		ArrayList<Employee> emps = new ArrayList<Employee>();
-		emps = ManagerDao.dptMembers(Integer.parseInt(request.getParameter("dptlist")));
 		out.println("<html><body>");
 		out.println("<p>");
-		for(Employee emp : emps) {
+		out.println("Employees across departments who are drawing the same salary:");
+		out.println("<br/><br/>");
+		for(Employee emp : salaryList) {
 			out.println(emp.geteName());
 			out.println("<br/>");
 		}

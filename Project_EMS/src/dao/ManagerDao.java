@@ -127,27 +127,19 @@ public class ManagerDao {
 		return result;
 	}
 	
-	public static ArrayList<Employee> dptWithLeastEmp() {
+	public static Department dptWithLeastEmp() {
 		// get department which has least employee
 		Connection conn = DBconn.getConn();
-		ArrayList<Employee> result = new ArrayList<Employee>();
+		Department result = new Department();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from employee");
-			while (rs.next()) {
-				Employee emp = new Employee();
-				emp.setEid(rs.getInt("eid"));
-				emp.setAddress(rs.getString("address"));
-				emp.setEmail(rs.getString("email"));
-				emp.seteName(rs.getString("eName"));
-				emp.setImgPath(rs.getString("imgpath"));
-				emp.setIsManager(rs.getInt("ismanager"));
-				emp.setJoinDate(rs.getDate("joindate"));
-				emp.setManager(rs.getInt("manager"));
-				emp.setPassword(rs.getString("password"));
-				emp.setPhoneNum(rs.getString("phonenum"));
-				emp.setSalary(rs.getDouble("salary"));
-				result.add(emp);
+			String sql = "select * from department where did = "
+					+ "(select did from (select count(eid) as cteid, did from empdpt group by did) "
+					+ "where cteid = (select min(count(eid)) from empdpt group by did))";
+			ResultSet rs = st.executeQuery(sql);
+			if (rs.next()) {
+				result.setdName(rs.getString("dname"));
+				result.setDid(rs.getInt("did"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -157,27 +149,29 @@ public class ManagerDao {
 		return result;
 	}
 	
-	public static ArrayList<Employee> mngWithMostRpt() {
+	public static Employee mngWithMostRpt() {
 		// get manage who has the highest employees
 		Connection conn = DBconn.getConn();
-		ArrayList<Employee> result = new ArrayList<Employee>();
+		Employee result = new Employee();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from employee");
-			while (rs.next()) {
-				Employee emp = new Employee();
-				emp.setEid(rs.getInt("eid"));
-				emp.setAddress(rs.getString("address"));
-				emp.setEmail(rs.getString("email"));
-				emp.seteName(rs.getString("eName"));
-				emp.setImgPath(rs.getString("imgpath"));
-				emp.setIsManager(rs.getInt("ismanager"));
-				emp.setJoinDate(rs.getDate("joindate"));
-				emp.setManager(rs.getInt("manager"));
-				emp.setPassword(rs.getString("password"));
-				emp.setPhoneNum(rs.getString("phonenum"));
-				emp.setSalary(rs.getDouble("salary"));
-				result.add(emp);
+			String sql = "select * from employee where eid = "
+					+ "(select manager from "
+					+ "(select count(eid) as ct, manager from employee group by manager) "
+					+ "where ct = (select max(count(eid)) from employee group by manager))";
+			ResultSet rs = st.executeQuery(sql);
+			if (rs.next()) {
+				result.setEid(rs.getInt("eid"));
+				result.setAddress(rs.getString("address"));
+				result.setEmail(rs.getString("email"));
+				result.seteName(rs.getString("eName"));
+				result.setImgPath(rs.getString("imgpath"));
+				result.setIsManager(rs.getInt("ismanager"));
+				result.setJoinDate(rs.getDate("joindate"));
+				result.setManager(rs.getInt("manager"));
+				result.setPassword(rs.getString("password"));
+				result.setPhoneNum(rs.getString("phonenum"));
+				result.setSalary(rs.getDouble("salary"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -193,7 +187,10 @@ public class ManagerDao {
 		ArrayList<Employee> result = new ArrayList<Employee>();
 		try {
 			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from employee");
+			String sql = "select * from employee where eid in "
+					+ "(select eid from "
+					+ "(select count(did), eid from empdpt group by eid having count(eid)>1))";
+			ResultSet rs = st.executeQuery(sql);
 			while (rs.next()) {
 				Employee emp = new Employee();
 				emp.setEid(rs.getInt("eid"));
@@ -217,13 +214,16 @@ public class ManagerDao {
 		return result;
 	}
 	
-	public static ArrayList<Employee> empWithSameSalary() {
+	public static ArrayList<Employee> empWithSameSalary(int eid) {
 		// get list of employees who belongs to multiple departments
 		Connection conn = DBconn.getConn();
 		ArrayList<Employee> result = new ArrayList<Employee>();
 		try {
-			Statement st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from employee");
+			String sql = "select * from employee where salary = "
+					+ "(select salary from employee where eid = ?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, eid);
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Employee emp = new Employee();
 				emp.setEid(rs.getInt("eid"));

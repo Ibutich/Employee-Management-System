@@ -19,7 +19,7 @@ public class AdminDao {
 			ps.setString(5, employee.getImgPath());
 			ps.setDate(6, new java.sql.Date(employee.getJoinDate().getTime()));
 			ps.setDouble(7, employee.getSalary());
-			ps.setInt(8, employee.getManager());
+			ps.setInt(8, employee.getManager()); // manager's manager is himself
 			ps.setInt(9, employee.getIsManager());
 			ps.setString(10, employee.getPassword());
 			ps.executeUpdate();

@@ -8,10 +8,10 @@
 </head>
 <body>
 	Hello Manager: <br/>
-	<%! Employee emp = new Employee(); %>
+	<%! //Employee emp = new Employee(); %>
 	<% 
-		emp = (Employee)session.getAttribute("currentEmployee");
-		out.print(emp.geteName());
+		//emp = (Employee)session.getAttribute("currentEmployee");
+		//out.print(emp.geteName());
 	%>
 	<br/><br/>
 	<div>
@@ -49,30 +49,20 @@
 	<div>
 		Department which has least number of employees: <br/>
 		<%  
-			ArrayList<Employee> leastList = new ArrayList<Employee>();
-			leastList = ManagerDao.dptWithLeastEmp();
-			for(Employee emp : leastList) {
-				out.println(emp.geteName());
+			Department leastDept = new Department();
+			leastDept = ManagerDao.dptWithLeastEmp();
+			out.println(leastDept.getdName());
 		%>
-		<br/>
-		<%
-			}
-		%>
-		<br/>
+		<br/><br/>
 	</div>
 	<div>
 		Manager who has highest number of reportees: <br/>
 		<%  
-			ArrayList<Employee> highestList = new ArrayList<Employee>();
-			highestList = ManagerDao.mngWithMostRpt();
-			for(Employee emp : highestList) {
-				out.println(emp.geteName());
+			Employee highestMng = new Employee();
+			highestMng = ManagerDao.mngWithMostRpt();
+			out.println(highestMng.geteName());
 		%>
-		<br/>
-		<%
-			}
-		%>
-		<br/>
+		<br/><br/>
 	</div>
 	<div>
 		Employees who belong to multiple departments <br/>
@@ -89,17 +79,20 @@
 		<br/>
 	</div>
 	<div>
-		Employees across departments who are drawing the same salary: <br/>
-		<%  
-			ArrayList<Employee> salaryList = new ArrayList<Employee>();
-			salaryList = ManagerDao.empWithSameSalary();
-			for(Employee emp : salaryList) {
-				out.println(emp.geteName());
-		%>
-		<br/>
-		<%
-			}
-		%>
+		<form action="DrawSameSalary" method="post">
+			<%  
+				ArrayList<Employee> list = new ArrayList<Employee>();
+				list = AdminDao.getAllEmployees();
+				for(Employee emp : list) {
+					out.println(emp.geteName());
+			%>
+			<input type="radio" name="emplist" value="<%= emp.getEid() %>">
+			<br/>
+			<%
+				}
+			%>
+			<input type="submit" name="check" value="Check"/>
+		</form>
 		<br/>
 	</div>
 </body>
