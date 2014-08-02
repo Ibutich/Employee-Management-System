@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+.header {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 18px;
+	font-style:italic;
+	width: 1000px;
+	margin: auto;
+	height: 150px;
+}
+.centerLabel{
+	width:936px;
+	height:264px;
+	margin:auto;
+	background: url(img/bannerSite2.jpg);
+	background-size: 936px 264px;	
+}
+.centerWelcome{
+	width: 200px;
+	height: 200px;
+	float: right;
+}
+.bottomTable{
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width:936px;
+	height:600px;
+	background: url(BackgroundDept.png);
+	background-size: 936px 600px;
+}
+.formStyle{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	font-color: #DCE1F5;
+	line-height:30px;
+	background-color: rgba(#ffdd00,.6);
+	text-align: right;
+	padding: 50px;
+	margin-left: 200px;
+	margin-right:400px;
+	
+}

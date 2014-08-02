@@ -4,25 +4,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>upEmp</title>
+<title>Update Employee</title>
+<link rel="stylesheet" type="text/css" href="UpdEm.css" media="screen" />
+<link rel="stylesheet" href="bootstrap.css"/>
+<link rel="stylesheet" href="bootstrapValidator.css"/>
+<script type="text/javascript" src="UpdEm.js"></script>
 </head>
 <body>
-	<form action="UpdateEmpConfirm" method="post">
+<div class="col-lg-8 col-lg-offset-2">
+<div class="page-header">
+                        <h2>Update Employee</h2>
+                    </div>
+	<form id="defaultForm" method="post" class="form-horizontal" action="DelEmployee">
+	<!-- <form action="UpdateEmpConfirm" method="post" class="form"> -->
 		<%  
 			ArrayList<UpdateReq> list = new ArrayList<UpdateReq>();
 			list = AdminDao.getUpdateReqs();
 			for(UpdateReq upr : list) {
-				out.println(upr.geteName());
 		%>
-		<input type="checkbox" name="uplist" value="<%= upr.getUpid() %>">
+		<div class="form-group">
+                            <div class="col-lg-5">
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="inputField" type="checkbox" name="dptlist" value="<%= upr.getUpid() %>"/><%= upr.geteName() %>
+                                    </label>
+                                </div>
+							</div>
+				</div>
+		<input class="inputField" type="checkbox" name="uplist" value="<%= upr.getUpid() %>">
 		<br/>
 		<%
 			}
 		%>
-		<input type="submit" name="update" value="Update"/>
+		
+		<input type="image" name="update" class="updateBtn" src="updateBtn.png" width="25px" height="25px" />
 	</form>
-	<form action="admin.jsp" method="get">
-		<input type="submit" name="back" value="Back"/>
-	</form>
+
 </body>
 </html>

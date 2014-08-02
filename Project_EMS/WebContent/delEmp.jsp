@@ -4,25 +4,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>delEmp</title>
+<link rel="stylesheet" type="text/css" href="delEm.css" media="screen" />
+<link rel="stylesheet" href="bootstrap.css"/>
+<link rel="stylesheet" href="bootstrapValidator.css"/>
+<title>delete Employee</title>
 </head>
 <body>
-	<form action="DelEmployee" method="post">
+<div class="col-lg-8 col-lg-offset-2">
+<div class="page-header">
+                        <h2>Delete Employee</h2>
+                    </div>
+	<form id="defaultForm" method="post" class="form-horizontal" action="DelEmployee">
+	<!-- <form action="DelEmployee" method="post" class="formStyle"> -->
 		<%  
 			ArrayList<Employee> list = new ArrayList<Employee>();
 			list = AdminDao.getAllEmployees();
 			for(Employee emp : list) {
-				out.println(emp.geteName());
 		%>
-		<input type="checkbox" name="emplist" value="<%= emp.getEid() %>">
-		<br/>
+		<div class="form-group">
+                            <div class="col-lg-5">
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="inputField" type="checkbox" name="dptlist" value="<%= emp.getEid() %>"/><%= emp.geteName() %>
+                                    </label>
+                                </div>
+				</div>
+				</div>
 		<%
 			}
 		%>
-		<input type="submit" name="delete" value="Delete"/>
+		<input type="image" name="delete" class="deleteBtn" src="deleteBtn.png" width="25px" height="25px" />
 	</form>
-	<form action="admin.jsp" method="get">
-		<input type="submit" name="back" value="Back"/>
-	</form>
+	</div>
 </body>
 </html>

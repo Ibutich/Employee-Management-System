@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="UTF-8">
 <title>Admin</title>
 <link rel="stylesheet" type="text/css" media="screen" href="style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="simple_menu.css">
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	$("#delD").click(function(){
 		$(".bottomTable").load("delDpt.jsp");
 	});
-	$("#upDept").click(function(){
+	$("#upEmp").click(function(){
 		$(".bottomTable").load("upDpt.jsp");
 	});
 	$("#designate").click(function(){
@@ -43,12 +43,12 @@ $(document).ready(function(){
 <body>
 <div class="header">
     
-    <div id="site_title"><a href="admin.jsp"><img src="img/Logo Marlabs_0.png" width= "188" height="95" /></a>
+    <div id="site_title"><a href="index.html"><img src="img/Logo Marlabs_0.png" width= "188" height="95" /></a>
 
     <!-- Main Menu -->
     
     <ol id="menu">
-             <li><a href="admin.jsp" style="background-color:#DCE1F5" >Home</a>
+             <li><a href="index.html" style="background-color:#DCE1F5" >Home</a>
         
              </li><!-- END sub menu -->
         
@@ -66,7 +66,7 @@ $(document).ready(function(){
         	<ol>     
                 <li><p id="addD">ADD</p></li>
                 <li><p id="delD">DELETE</p></li>
-                <li><p id="upDept">UPDATE</p></li>
+                <li><p id="showD">UPDATE</p></li>
         	</ol>
         </li>
         <li><a href="#" style="background-color:#DCE1F5">Designate</a>

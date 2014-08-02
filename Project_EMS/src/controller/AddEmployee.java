@@ -50,7 +50,7 @@ public class AddEmployee extends HttpServlet {
 		emp.setJoinDate(new Date());
 		emp.setImgPath("null");
 		AdminDao.addEmployee(emp);
-		response.sendRedirect("admin.jsp");
+		response.sendRedirect("default.jsp");
 	}
 
 }

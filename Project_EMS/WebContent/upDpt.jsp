@@ -5,9 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>upDpt</title>
+<link rel="stylesheet" type="text/css" href="UpdDept.css" media="screen" />
+<script type="text/javascript" src="UpdDept.js"></script>
 </head>
 <body>
-	<form action="UpdateDepartment" method="post">
+  <section class="main"><!-- adding class -->
+    <div class="displayDiv"><!-- adding class -->
+	<form action="UpdateDepartment" method="post" class="formStyle">
 		<%  
 			ArrayList<Department> list = new ArrayList<Department>();
 			list = AdminDao.getAllDepartments();
@@ -19,11 +23,12 @@
 		<%
 			}
 		%>
-		<input type="text" name="dname" required/>
-		<input type="submit" name="update" value="Update"/>
+		<input class="inputField" type="text" name="dname" required/>
+		<input class="executeBtn" type="submit" name="update" value="Update"/>
 	</form>
-	<form action="admin.jsp" method="get">
-		<input type="submit" name="back" value="Back"/>
-	</form>
+    </div><!-- adding class -->
+    <div class="inputDiv"><!-- adding class -->
+    </div><!-- adding class -->
+  </section><!-- adding class -->
 </body>
 </html>
