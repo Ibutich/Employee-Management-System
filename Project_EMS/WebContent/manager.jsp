@@ -1,99 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="dao.*, java.util.*, model.*"%>
+    pageEncoding="ISO-8859-1" import="model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
 <html>
 <head>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="ma.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Manager</title>
+<script>
+$(document).ready(function(){
+	$("#content").load("index.html");
+	
+	//<button value="ajax content" id="Home_Btn">Home Page</button>
+	//$("#Home_Btn").click(function(){
+		//$("#menu").slideToggle();
+		//$("#content").load("Web-Content/test.html");  //this works
+	//});
+	
+	$("#TagDepartment").click(function(){	
+		$("#content").load("maSub/DeptDetails.jsp");  //this works
+	});
+	$("#TagMultiDept").click(function(){
+		$("#content").load("maSub/multi.jsp");  //this works
+	});
+	$("#TagNew").click(function(){
+		$("#content").load("maSub/newlyJoined.jsp");  //this works
+	});
+	$("#TagLeastNum").click(function(){	
+		$("#content").load("maSub/least.jsp");  //this works
+	});
+	$("#TagHighestNum").click(function(){
+		$("#content").load("maSub/higest.jsp");  //this works
+	});
+	$("#TagDrawSalary").click(function(){
+		$("#content").load("maSub/drawS.jsp");  //this works
+	});
+
+});
+
+
+</script>
 </head>
+
 <body>
-	Hello Manager: <br/>
-	<%! //Employee emp = new Employee(); %>
+
+
+<div id="container">
+	<div id="header" style="">
+	<h2 id="title" align="center">
+	Hello, 
+		<%! Employee emp = new Employee(); %>
 	<% 
-		//emp = (Employee)session.getAttribute("currentEmployee");
-		//out.print(emp.geteName());
+		emp = (Employee)session.getAttribute("currentEmployee");
+		out.print(emp.geteName());
 	%>
-	<br/><br/>
-	<div>
-		Newly joined employees: <br/>
-		<%  
-			ArrayList<Employee> newJoinList = new ArrayList<Employee>();
-			newJoinList = ManagerDao.newJoinedEmployees();
-			for(Employee emp : newJoinList) {
-				out.println(emp.geteName());
-		%>
-		<br/>
-		<%
-			}
-		%>
-		<br/>
+	</h2>
+	
+	<div id="content">
+		<!--
+		<form id="f1" action="UpdateEmpReq" method="post" accept-charset="utf-8">
+			name: <input type="text" name="ename" required><br/>
+			password: <input type="text" name="pwd" required><br/>
+			address: <input type="text" name="add" required><br/>
+			phone number: <input type="text" name="phon" required><br/>
+			img path: <input type="text" name="imgp" required><br/>
+			<input type="submit" name="update" value="Update">
+		</form> -->
 	</div>
-	<div>
-		Details of all the employees of a department: <br/>
-		<form action="DptMemberDetail" method="post">
-			<%  
-				ArrayList<Department> dmList = new ArrayList<Department>();
-				dmList = AdminDao.getAllDepartments();
-				for(Department dpt : dmList) {
-					out.println(dpt.getdName());
-			%>
-			<input type="radio" name="dptlist" value="<%= dpt.getDid() %>">
-			<br/>
-			<%
-				}
-			%>
-			<input type="submit" name="view" value="View"/>
+	<div id="menu">
+		<div id="tag">
+			<button id="TagNew" class="tag">Newly joined</button>
+			<button id="TagDepartment" class="tag">Department details</button>
+			<button id="TagLeastNum" class="tag">Least employee department</button>
+			<button id="TagHighestNum" class="tag">Highest reported department</button>
+			<button id="TagMultiDept" class="tag">Multi-department</button>
+			<button id="TagDrawSalary" class="tag">Draw same salary</button>
+
+		</div>
+	</div>
+	<div id="footer">
+		<br>
+		<form action="login.jsp" method="get" id="f2">
+			<input type="image" name="logout" class="logoutBtn" src="logout.png"  />
 		</form>
-		<br/>
 	</div>
-	<div>
-		Department which has least number of employees: <br/>
-		<%  
-			Department leastDept = new Department();
-			leastDept = ManagerDao.dptWithLeastEmp();
-			out.println(leastDept.getdName());
-		%>
-		<br/><br/>
-	</div>
-	<div>
-		Manager who has highest number of reportees: <br/>
-		<%  
-			Employee highestMng = new Employee();
-			highestMng = ManagerDao.mngWithMostRpt();
-			out.println(highestMng.geteName());
-		%>
-		<br/><br/>
-	</div>
-	<div>
-		Employees who belong to multiple departments <br/>
-		<%  
-			ArrayList<Employee> multipleList = new ArrayList<Employee>();
-			multipleList = ManagerDao.multiBelongEmp();
-			for(Employee emp : multipleList) {
-				out.println(emp.geteName());
-		%>
-		<br/>
-		<%
-			}
-		%>
-		<br/>
-	</div>
-	<div>
-		<form action="DrawSameSalary" method="post">
-			<%  
-				ArrayList<Employee> list = new ArrayList<Employee>();
-				list = AdminDao.getAllEmployees();
-				for(Employee emp : list) {
-					out.println(emp.geteName());
-			%>
-			<input type="radio" name="emplist" value="<%= emp.getEid() %>">
-			<br/>
-			<%
-				}
-			%>
-			<input type="submit" name="check" value="Check"/>
-		</form>
-		<br/>
-	</div>
+</div>
+
+
 </body>
 </html>

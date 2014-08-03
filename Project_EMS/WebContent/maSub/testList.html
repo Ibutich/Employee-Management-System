@@ -1,0 +1,20 @@
+<div id="infoSection">
+Details of all the employees of a department: <br/>
+<div id="infoList">
+		<form action="DptMemberDetail" method="post" id=subForm>
+			<%  
+				ArrayList<Department> dmList = new ArrayList<Department>();
+				dmList = AdminDao.getAllDepartments();
+				for(Department dpt : dmList) {
+					out.println(dpt.getdName());
+			%>
+			<input type="radio" name="dptlist" value="<%= dpt.getDid() %>">
+			<br/>
+			<%
+				}
+			%>
+			<input type="submit" name="view" value="View"/>
+		</form>
+		<br/>
+</div>
+</div>

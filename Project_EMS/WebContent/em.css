@@ -1,0 +1,73 @@
+
+#container{
+	
+	padding-top: 30px;
+	width:100%;
+	height:100%;
+	margin: 0 auto;
+}
+#header{
+	
+}
+#menu{ 
+	height:500px;
+	width:15%;
+	float:left;
+}
+#content{
+	opacity: 0.8;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+	background-color: #ffffff;
+	height:500px;
+	width:85%;
+	float:left;
+}
+#footer{
+	
+	clear:both;
+	text-align:center;
+}
+.tag{
+	height: 166px;
+	width: 100%;
+	padding: 0px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: 5px;
+}
+#TagP{
+	background-color: #f95d5d;
+	opacity: 0.9;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+#TagU{
+	background-color: #6ffb79;
+
+}
+#TagM{
+	background-color: #796ffb;
+	opacity: 0.9;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+body{
+	clear:both;
+	background-color: #ade9f9;
+	background-image: url("BGemployee.png");
+}
+#f1{
+	padding:25px;
+}
+#f2{
+	float: right;
+	padding-right:50px;
+}
+h2{
+	font-family: Papyrus, fantasy;
+	font-weight:bold;
+	color: white;
+}
+.logoutBtn{
+	width:100px;
+	height:100px;
+	
+}

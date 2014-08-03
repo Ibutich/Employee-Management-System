@@ -1,0 +1,92 @@
+
+#container{
+	
+	padding-top: 30px;
+	width:100%;
+	height:100%;
+	margin: 0 auto;
+}
+#header{
+	
+}
+#menu{ 
+	height:500px;
+	width:15%;
+	float:left;
+	font-size: 20px;
+}
+#content{
+	opacity: 0.8;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+	background-color: #ffffff;
+	height:500px;
+	width:85%;
+	float:left;
+}
+#footer{
+	
+	clear:both;
+	text-align:center;
+}
+.tag{
+	height: 83.33px;
+	width: 100%;
+	padding: 0px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 3px;
+	opacity: 0.9;
+    filter: alpha(opacity=60);
+}
+#TagNew{
+	background-color: #fa8b8b;
+	 /* For IE8 and earlier */
+}
+#TagDepartment{
+	background-color: #fac58b;
+}
+#TagLeastNum{
+	background-color: #faf98b;
+}
+#TagHighestNum{
+	background-color: #8bfa8e;
+}
+#TagMultiDept{
+	background-color: #8b9bfa;
+}
+#TagDrawSalary{
+	background-color: #b08bfa;
+}
+
+body{
+	clear:both;
+	background-color: #ade9f9;
+	background-image: url("BGmanager.png");
+}
+#f1{
+	padding:25px;
+}
+#f2{
+	float: right;
+	padding-right:50px;
+}
+h2{
+	font-family: Papyrus, fantasy;
+	font-weight:bold;
+	color: white;
+}
+.logoutBtn{
+	width:100px;
+	height:100px;
+	
+}
+#infoSection{
+	padding: 60px;
+	padding-left: 100px;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-weight: 5px;
+}
+#infoList{
+	padding-left: 60px;
+	padding-top: 10px;
+}

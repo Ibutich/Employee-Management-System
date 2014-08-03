@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Name</label>
                             <div class="col-lg-5">
-                                <input type="text" class="form-control" name="ename" required />
+                                <input type="text" class="form-control" name="dname" required />
                             </div>
                         </div>
                         <div class="form-group">

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="delEm.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="delEmp.css" media="screen" />
 <link rel="stylesheet" href="bootstrap.css"/>
 <link rel="stylesheet" href="bootstrapValidator.css"/>
 <title>delete Employee</title>

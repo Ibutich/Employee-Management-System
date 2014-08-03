@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="bootstrap.css"/>
+<link rel="stylesheet" href="bootstrapValidator.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>upDpt</title>
 <link rel="stylesheet" type="text/css" href="UpdDept.css" media="screen" />

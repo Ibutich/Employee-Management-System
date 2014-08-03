@@ -41,7 +41,7 @@ public class LoginPortal extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		if(request.getParameter("managerLogin").equals("maneger")) {
+		if(request.getParameter("managerLogin").equals("manager")) {
 			if(EmployeeDao.loginAuthentication(email, password) && ManagerDao.isManagerOrNot(email)) {
 				Employee emp = new Employee();
 				emp = AdminDao.getEmployeeByEmail(email);

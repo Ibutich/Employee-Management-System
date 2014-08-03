@@ -15,7 +15,7 @@
 <div class="page-header">
                         <h2>Update Employee</h2>
                     </div>
-	<form id="defaultForm" method="post" class="form-horizontal" action="DelEmployee">
+	<form id="defaultForm" method="post" class="form-horizontal" action="UpdateEmpConfirm">
 	<!-- <form action="UpdateEmpConfirm" method="post" class="form"> -->
 		<%  
 			ArrayList<UpdateReq> list = new ArrayList<UpdateReq>();
@@ -26,12 +26,11 @@
                             <div class="col-lg-5">
                                 <div class="checkbox">
                                     <label>
-                                        <input class="inputField" type="checkbox" name="dptlist" value="<%= upr.getUpid() %>"/><%= upr.geteName() %>
+                                        <input class="inputField" type="checkbox" name="uplist" value="<%= upr.getUpid() %>"/><%= upr.geteName() %>
                                     </label>
                                 </div>
 							</div>
 				</div>
-		<input class="inputField" type="checkbox" name="uplist" value="<%= upr.getUpid() %>">
 		<br/>
 		<%
 			}
